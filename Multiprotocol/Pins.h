@@ -212,8 +212,17 @@
 		#define IS_BIND_BUTTON_on	( (BIND_ipr & _BV(BIND_pin)) == 0x00 )
 	#endif
 #else //STM32_BOARD
-	#define	BIND_pin		PA0
-	#define	LED_pin			PA1
+//	#define	BIND_pin		PA0
+//	#define	LED_pin			PA1
+#if defined BOARD_maple_mini
+  #define BIND_pin    PA0 
+  //la led pourra devenir 
+  #define  LED_pin     PB1
+#else
+  #define BIND_pin    PA0
+  #define LED_pin     PA1
+#endif
+ 
 	#define	LED2_pin		PA2
 	//
 	#define	PPM_pin			PA8								//PPM  5V tolerant
@@ -229,7 +238,12 @@
 	#define	CC25_CSN_pin	PB6								//CC2500
 	#define	NRF_CSN_pin		PB7								//NRF24L01
 	#define	CYRF_RST_pin	PB8								//CYRF RESET
-	#define	A7105_CSN_pin	PB9								//A7105
+//	#define	A7105_CSN_pin	PB9								//A7105
+#if defined BOARD_maple_mini
+    #define A7105_CSN_pin PA14               //A7105
+#else
+    #define A7105_CSN_pin PB9               //A7105
+#endif
 	#define	CYRF_CSN_pin	PB12							//CYRF CSN
 	#define SPI_CSN_pin		PA15
 	//SPI pins	
@@ -238,7 +252,15 @@
 	#define	SDI_pin			PB15							//MOSI
 	//
 	#define	TX_INV_pin		PB3
-	#define	RX_INV_pin		PB1
+//	#define	RX_INV_pin		PB1
+#if defined BOARD_maple_mini
+  #define RX_INV_pin    PB0
+#else
+  #define RX_INV_pin    PB1
+#endif
+
+
+
 	//
 	#define	PE1_on  		digitalWrite(PE1_pin,HIGH)
 	#define	PE1_off		 	digitalWrite(PE1_pin,LOW)

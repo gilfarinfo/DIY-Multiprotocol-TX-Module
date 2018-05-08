@@ -32,6 +32,12 @@
 	#include "MultiOrange.h"
 #endif
 
+//To run with maple mini board#if defined BOARD_maple_mini
+#if defined BOARD_maple_mini
+  #define STM32_BOARD
+  #define ARDUINO_GENERIC_STM32F103C
+#endif
+
 #include "Multiprotocol.h"
 
 //Multiprotocol module configuration file
